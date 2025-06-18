@@ -149,6 +149,7 @@
 @media (max-width: 768px) {
   .movie-card {
     font-size: 0.9rem;
+    max-width: 180px;
   }
 
   .movie-info {
@@ -160,7 +161,63 @@
     height: 32px;
     font-size: 1.2rem;
   }
+
+  .trailer-btn-overlay {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+
+  .overlay-buttons {
+    padding: 0.5rem;
+  }
 }
+
+@media (max-width: 480px) {
+  .movie-card {
+    font-size: 0.8rem;
+    max-width: 140px;
+  }
+
+  .movie-info {
+    padding: 0.5rem;
+  }
+
+  .movie-info h3 {
+    font-size: 0.8rem;
+    line-height: 1.1;
+  }
+
+  .movie-info p {
+    font-size: 0.7rem;
+  }
+
+  .favorite-btn,
+  .trailer-btn-overlay {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  .overlay-buttons {
+    padding: 0.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .movie-card {
+    max-width: 120px;
+  }
+
+  .movie-info h3 {
+    font-size: 0.75rem;
+  }
+
+  .movie-info p {
+    font-size: 0.65rem;
+  }
+}
+
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 5 columns */
