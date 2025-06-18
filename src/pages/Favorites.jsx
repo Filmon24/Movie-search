@@ -5,12 +5,26 @@ import MovieCard from "../components/MovieCard";
 
 function Favorites() {
 
-    const {favorites} = useMovieContext();
+    const {favorites, clearAllFavorites} = useMovieContext();
+
+    const handleClearAll = () => {
+        if (window.confirm("Are you sure you want to remove all favorite movies?")) {
+            clearAllFavorites();
+        }
+    }
 
     if (favorites.length > 0) {
         return (
             <div className="favorites">
-                <h2> your Favorite Movies</h2>
+                <div className="favorites-header">
+                    <h2>Your Favorite Movies ({favorites.length})</h2>
+                    <button 
+                        onClick={handleClearAll}
+                        className="clear-all-btn"
+                    >
+                        Clear All Favorites
+                    </button>
+                </div>
                 <div className="movie-grid">
                 {favorites.map((movie) =>(  
                 <MovieCard movie={movie} key={movie.id} />
@@ -22,8 +36,8 @@ function Favorites() {
 
       return ( 
         <div className="favorites-empty">
-          <h2> No Favorite Movies Yet</h2>
-          <p>start adding movies to your favorites and they will appear hear</p>
+          <h2>No Favorite Movies Yet</h2>
+          <p>Start adding movies to your favorites and they will appear here</p>
         </div>
       );
     }

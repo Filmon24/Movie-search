@@ -12,6 +12,40 @@
     font-weight: bold;
     color: red;
   }
+
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+  }
+
+  .brand-link:hover {
+    transform: scale(1.05);
+  }
+
+  .movie-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e50914;
+    box-shadow: 0 2px 8px rgba(229, 9, 20, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .movie-logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.5);
+  }
+
+  .brand-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e50914;
+  }
   
   .navbar-links {
     display: flex;
@@ -37,6 +71,15 @@
   
     .navbar-brand {
       font-size: 1.2rem;
+    }
+
+    .brand-text {
+      font-size: 1.2rem;
+    }
+
+    .movie-logo {
+      width: 35px;
+      height: 35px;
     }
   
     .navbar-links {

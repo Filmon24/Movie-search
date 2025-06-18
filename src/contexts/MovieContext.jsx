@@ -6,19 +6,43 @@ export const useMovieContext = () => useContext(MovieContext)
 
 export const MovieProvider = ({children}) => {
     const [favorites, setFavorites] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false)
 
+    // Load favorites from localStorage on component mount
     useEffect(() => {
-        const storedFavs = localStorage.getItem("favorites")
-
-        if (storedFavs) setFavorites(JSON.parse(storedFavs))
+        try {
+            const storedFavs = localStorage.getItem("favorites")
+            if (storedFavs) {
+                const parsedFavs = JSON.parse(storedFavs)
+                if (Array.isArray(parsedFavs)) {
+                    setFavorites(parsedFavs)
+                }
+            }
+        } catch (error) {
+            console.error("Error loading favorites from localStorage:", error)
+            // If there's an error, clear the corrupted data
+            localStorage.removeItem("favorites")
+        } finally {
+            setIsLoaded(true)
+        }
     }, [])
 
+    // Save favorites to localStorage whenever favorites change
     useEffect(() => {
-        localStorage.setItem('favorites', JSON.stringify(favorites))
-    }, [favorites])
+        if (isLoaded) {
+            try {
+                localStorage.setItem('favorites', JSON.stringify(favorites))
+            } catch (error) {
+                console.error("Error saving favorites to localStorage:", error)
+            }
+        }
+    }, [favorites, isLoaded])
 
     const addToFavorites = (movie) => {
-        setFavorites(prev => [...prev, movie])
+        // Check if movie is already in favorites
+        if (!favorites.some(fav => fav.id === movie.id)) {
+            setFavorites(prev => [...prev, movie])
+        }
     }
 
     const removeFromFavorites = (movieId) => {
@@ -29,11 +53,17 @@ export const MovieProvider = ({children}) => {
         return favorites.some(movie => movie.id === movieId)
     }
 
+    const clearAllFavorites = () => {
+        setFavorites([])
+    }
+
     const value = {
         favorites,
         addToFavorites,
         removeFromFavorites,
-        isFavorite
+        isFavorite,
+        clearAllFavorites,
+        isLoaded
     }
 
     return <MovieContext.Provider value={value}>

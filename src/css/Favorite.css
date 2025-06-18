@@ -4,12 +4,42 @@
     box-sizing: border-box;
   }
   
-  .favorites h2 {
+  .favorites-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 2rem;
-    text-align: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .favorites h2 {
+    margin: 0;
     font-size: 2.5rem;
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .clear-all-btn {
+    background: linear-gradient(135deg, #ff4757, #ff3742);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+  }
+  
+  .clear-all-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+  }
+  
+  .clear-all-btn:active {
+    transform: translateY(0);
   }
   
   .favorites-empty {
