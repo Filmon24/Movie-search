@@ -10,12 +10,12 @@ function NavBar() {
                         alt="Movie Logo" 
                         className="movie-logo"
                     />
-                    <span className="brand-text">Movie App</span>
+                    <span className="brand-text">Bemniiyee❤️❤️❤️ Movie App</span>
                 </Link>   
             </div>
             <div className="navbar-links">
                 <Link to="/" className="nav-link">Home</Link>
-                <Link to="/favorites" className="nav-link">Favorites</Link>
+                <Link to="/favorites" className="nav-link">yene jezbaa's fav</Link>
             </div>
         </nav>
     )
