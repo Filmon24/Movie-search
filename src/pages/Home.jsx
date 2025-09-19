@@ -62,6 +62,15 @@ function Home() {
 
       {loading ? (
         <div className="loading">Loading...</div>
+      ) : movies.length === 0 ? (
+        <div className="empty-state">
+          <h3>No movies found</h3>
+          {searchQuery ? (
+            <p>We couldn't find any results for "{searchQuery}". Try another search.</p>
+          ) : (
+            <p>There are no movies to display right now.</p>
+          )}
+        </div>
       ) : (
         <div className="movies-grid">
           {movies.map((movie) => (
